@@ -1,5 +1,6 @@
 {
-	"flat": [
+	"source": "b",
+	"snapshots": [
 		{"path": "/setup/bones", "variables": {"x": 0, "y": 1}},
 		{"path": "/animation/death", "variables": {"duration": 0.15}},
 		{"path": "/animation/death/0.0/bones/jaw",  "variables": {"x": 0, "y": 2}},

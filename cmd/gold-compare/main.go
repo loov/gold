@@ -33,19 +33,24 @@ func main() {
 	for _, path := range paths {
 		label, path := extractLabelSource(path)
 
-		filedata, err := ioutil.ReadFile(path)
+		data, err := ioutil.ReadFile(path)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "%q: %v\n", path, err)
 			continue
 		}
 
-		data := gold.JSON{}
-		if err := json.Unmarshal(filedata, &data); err != nil {
+		output := gold.Output{}
+		if err := json.Unmarshal(data, &output); err != nil {
 			fmt.Fprintf(os.Stderr, "%q: %v\n", path, err)
 			continue
 		}
-
-		data.AddInto(tree, label)
+		if label != "" {
+			output.Source = label
+		}
+		if output.Source == "" {
+			output.Source = pathToSource(path)
+		}
+		output.AddInto(tree)
 	}
 
 	tree.UpdateError()
@@ -65,8 +70,12 @@ func main() {
 func extractLabelSource(arg string) (label, source string) {
 	p := strings.IndexByte(arg, '=')
 	if p < 0 {
-		base := filepath.Base(arg)
-		return base[:len(base)-len(filepath.Ext(base))], arg
+		return "", arg
 	}
 	return arg[:p], arg[p+1:]
+}
+
+func pathToSource(arg string) string {
+	base := filepath.Base(arg)
+	return base[:len(base)-len(filepath.Ext(base))]
 }
