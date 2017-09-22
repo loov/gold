@@ -1,0 +1,14 @@
+{
+	"flat": [
+		{"path": "/setup/bones", "variables": {"x": 0, "y": 1}},
+		{"path": "/animation/death", "variables": {"duration": 0.15}},
+		{"path": "/animation/death/0.0/bones/jaw",  "variables": {"x": 0, "y": 2}},
+		{"path": "/animation/death/0.0/bones/eye",  "variables": {"x": 2, "y": 2}},
+		{"path": "/animation/death/0.0/bones/root", "variables": {"x": 5, "y": 14}},
+		{"path": "/animation/death/0.0/bones/neck", "variables": {"x": 9, "y": 60}},
+		{"path": "/animation/death/0.1/bones/jaw",  "variables": {"x": 21, "y": 5}},
+		{"path": "/animation/death/0.1/bones/eye",  "variables": {"x": 63, "y": 51}},
+		{"path": "/animation/death/0.1/bones/root", "variables": {"x": 31, "y": 52}},
+		{"path": "/animation/death/0.1/bones/neck", "variables": {"x": 63, "y": 51}}
+	]
+}
